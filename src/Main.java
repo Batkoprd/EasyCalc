@@ -1,29 +1,29 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.List;
+import java.io.*;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(new File("input.txt"));
-        String userInput = scanner.nextLine();
 
-        FileWriter fileWriter = new FileWriter("output.txt");
+        FileOutputStream fileOutputStream = new FileOutputStream("output.txt");
+        PrintStream printStream = new PrintStream(fileOutputStream);
 
-        try {
-            Double res = Calc(userInput);
-            fileWriter.write(String.valueOf(res));
-            fileWriter.flush();
-        } catch (NumberFormatException e) {
-            System.out.println("Error! Not number");
-        } catch (IllegalArgumentException e) {
-            System.out.println("Operation Error!");
-        } catch (ArithmeticException e) {
-            System.out.println("Error! Division by zero");
+
+        while (scanner.hasNextLine()) {
+            String input = scanner.nextLine();
+
+            try {
+                double res = Calc(input);
+                printStream.println(input + " = " + res);
+            } catch(NumberFormatException e){
+                printStream.println(input + " = " + "Error! Not number");
+            } catch(IllegalArgumentException e){
+                printStream.println(input + " = " +"Operation Error!");
+            } catch(ArithmeticException e){
+                printStream.println(input + " = " +"Error! Division by zero");
+            }
         }
+        scanner.close();
     }
 
 

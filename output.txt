@@ -1,1 +1,12 @@
-10.0
+5 + 5 = 10.0
+5 * 10 = 50.0
+5 / 10 = 0.5
+10 - 7 = 3.0
+5.5 * -2 = -11.0
+2 ++ 1 = Operation Error!
+A * 5 = Error! Not number
+-5.5 / 4.54 = -1.2114537444933922
+23 + 42 = 65.0
+14 - f = Error! Not number
+15 / 0 = Error! Division by zero
+45 * 2 = 90.0
