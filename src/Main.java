@@ -1,16 +1,22 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(new File("input.txt"));
         String userInput = scanner.nextLine();
 
+        FileWriter fileWriter = new FileWriter("output.txt");
+
         try {
-            System.out.println(Calc(userInput));
+            Double res = Calc(userInput);
+            fileWriter.write(String.valueOf(res));
+            fileWriter.flush();
         } catch (NumberFormatException e) {
             System.out.println("Error! Not number");
         } catch (IllegalArgumentException e) {
